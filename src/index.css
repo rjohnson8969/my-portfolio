@@ -32,16 +32,20 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
   background-image: url('/background.jpg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  filter: blur(3px);  /* Subtle blur */
+  z-index: -1;
 }
 
 button {
