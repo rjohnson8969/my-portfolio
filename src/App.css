@@ -17,7 +17,7 @@
   max-width: 1200px;
   margin: auto;
   padding: 20px;
-  color: #527496;
+  color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,13 +38,13 @@ header, section, footer {
 h1 {
   font-size: 3rem;
   margin-bottom: 0.2em;
-  color: #2137ff;
+  color: #6bd3f2;
 }
 
 h2 {
   font-size: 2rem;
   margin-bottom: 1em;
-  color: #3f4fff;
+  color: #a8d5ff;
 }
 
 .projects-grid {
@@ -56,7 +56,7 @@ h2 {
 }
 
 .project-item {
-  background-color: #ecf0f1;
+  background-color: rgba(236, 240, 241, 0.95);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
