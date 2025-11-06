@@ -44,7 +44,7 @@ body::before {
   background-image: url('/wallpaperflare.com_wallpaper.jpg');
   background-size: cover;
   background-position: center;
-  filter: blur(3px);  /* Subtle blur */
+  filter: blur(0px);  /* Subtle blur */
   z-index: -1;
 }
 
