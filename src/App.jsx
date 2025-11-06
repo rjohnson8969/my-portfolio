@@ -4,7 +4,8 @@ import './App.css';
 
 function App() {
   const containerRef = useRef(null);
-  
+  const projectsRef = useRef(null);
+
   // Track scroll progress
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -18,12 +19,17 @@ function App() {
   const projectsY = useTransform(scrollYProgress, [0.3, 1], [100, -100]);
   const projectsOpacity = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
 
+  const scrollToProjects = () => {
+    projectsRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const projects = [
     {
       title: 'ESP32 Stock Market Ticker',
       description: 'WiFi-enabled stock ticker using an ESP32 and Arduino C to display real-time market data on an ST7789 TFT display.',
       githubLink: 'https://github.com/rjohnson8969/stockTicker',
-      image: 'https://via.placeholder.com/400x250?text=ESP32+Stock+Ticker'
+      image: 'https://via.placeholder.com/400x250?text=ESP32+Stock+Ticker',
+      video: '/videos/esp32-demo.mp4'
     },
     {
       title: 'Robotic Arm Automated Writing',
@@ -47,15 +53,41 @@ function App() {
           animate={{ y: 0, opacity: 1 }} 
           transition={{ duration: 0.6 }}
         >
-         rjohnson8969.github.io
+         rjohnson8969.github.io/my-portfolio/
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0 }} 
           animate={{ opacity: 1 }} 
           transition={{ delay: 0.6 }}
         >
-          Hi, I'm Riley! Welcome to my portfolio website, showcasing my passion for embedded systems, robotics, and web development.
+          Hi, I'm Riley! Welcome to my portfolio website, showcasing my passion for embedded systems, electronics, and web development.
         </motion.p>
+        
+        {/* Animated Scroll Indicator */}
+        <motion.div 
+          className="scroll-indicator"
+          onClick={scrollToProjects}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <motion.p className="scroll-text">Scroll to view projects</motion.p>
+          <motion.div
+            className="scroll-arrow"
+            animate={{ y: [0, 10, 0] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </motion.div>
+        </motion.div>
+
+
       </motion.header>
 
       {/* Projects section with parallax */}
