@@ -28,31 +28,27 @@ function App() {
       title: 'Wireless Clustered SCADA System',
       description:'Fully wireless SCADA prototype using an ESP32-based wireless sensor network (WSN). Features a real-time FreeRTOS PID loop for reservoir level control, low-latency ESP-NOW peer-to-peer messaging with MAC-based addressing, and a custom HMI on an ST7789 TFT LCD with rotary encoder for monitoring and PID tuning.',
       githubLink: 'https://github.com/rjohnson8969/WSN-SCADA-Project',
-      image: './images/HMI.png',
-      //video: '/videos/scada-demo.mp4'
+      image: './images/HMI.png'
     },
     {
       title: 'ESP32 Stock Market Ticker',
       description: 'WiFi-enabled stock ticker using an ESP32 and Arduino C to display real-time market data on an ST7789 TFT display.',
       githubLink: 'https://github.com/rjohnson8969/stockTicker',
-      image: './images/stockTicker.png',
-      //video: '/videos/esp32-demo.mp4'
+      image: './images/stockTicker.png'
     },
     {
       title: 'Sorting Algorithm Visualizer',
       description:
-        'JavaScript-based sorting visualizer with animated bars to demonstrate algorithms like bubble sort, selection sort, insertion sort, and quicksort (placeholder).',
+        'JavaScript-based sorting animation. Can demonstrate algorithms like bubble sort, merge sort, and bogo sort.',
       githubLink: 'https://github.com/rjohnson8969/sorting-visualizer', // placeholder
-      image: './images/sortingAlgVisual.png',
-      //video: '/videos/sorting-visualizer-demo.mp4' // placeholder (optional)
+      image: './images/sortingAlgVisual.png'
     },
     {
       title: 'Pong',
       description:
-        'Classic Pong game built in JavaScript with keyboard controls, score tracking, and increasing difficulty (placeholder).',
-      githubLink: 'https://github.com/rjohnson8969/pong', // placeholder
+        'Classic Pong game remake built in JavaScript with keyboard controls.',
+      githubLink: 'https://github.com/rjohnson8969/pong',
       image: './images/pong.png'
-      //video: '/videos/pong-demo.mp4' // placeholder (optional)
     }
   ];
 
@@ -70,14 +66,14 @@ function App() {
           animate={{ y: 0, opacity: 1 }} 
           transition={{ duration: 0.6 }}
         >
-         rjohnson8969.github.io/my-portfolio/
+         Riley Johnson
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0 }} 
           animate={{ opacity: 1 }} 
           transition={{ delay: 0.6 }}
         >
-          Hi, I'm Riley! Welcome to my portfolio website, showcasing my passion for embedded systems, electronics, and web development.
+          Hello! Welcome to my portfolio website. This site is designed to be a platform to allow me to showcase my favourite projects.
         </motion.p>
         
         {/* Animated Scroll Indicator */}
@@ -119,7 +115,7 @@ function App() {
           animate={{ x: 0, opacity: 1 }} 
           transition={{ duration: 0.5, delay: 1 }}
         >
-          Featured Projects
+          Featured
         </motion.h2>
         <motion.div 
           className="projects-grid"
