@@ -111,7 +111,7 @@ function App() {
         }}
       >
         <motion.h2 
-          initial={{ x: -100, opacity: 0 }} 
+          initial={{ y: -50, opacity: 0 }} 
           animate={{ x: 0, opacity: 1 }} 
           transition={{ duration: 0.5, delay: 1 }}
         >
@@ -133,7 +133,7 @@ function App() {
                 visible: { opacity: 1, y: 0 }
               }}
               className="project-item"
-              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+              whileHover={{ scale: 1.10, transition: { duration: 0.2 } }}
             >
               <div className="project-image">
                 <img src={project.image} alt={project.title} />
