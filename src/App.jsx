@@ -1,8 +1,11 @@
 import React, { useRef } from 'react';
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import './App.css';
 
-function App() {
+import PongGame from './PongGame';
+
+function Home() {
   const containerRef = useRef(null);
   const projectsRef = useRef(null);
 
@@ -48,7 +51,8 @@ function App() {
       description:
         'Classic Pong game remake built in JavaScript with keyboard controls.',
       githubLink: 'https://github.com/rjohnson8969/pong',
-      image: './images/pong.png'
+      image: './images/pong.png',
+      playLink: '/pong'
     }
   ];
 
@@ -112,7 +116,7 @@ function App() {
       >
         <motion.h2 
           initial={{ y: -50, opacity: 0 }} 
-          animate={{ x: 0, opacity: 1 }} 
+          animate={{ y: 0, opacity: 1 }} 
           transition={{ duration: 0.5, delay: 1 }}
         >
           Featured
@@ -141,6 +145,7 @@ function App() {
               <div className="project-content">
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
+                <div className="links-container" style={{ display: 'flex', gap: '10px' }}>
                 <a 
                   href={project.githubLink} 
                   target="_blank" 
@@ -152,6 +157,16 @@ function App() {
                   </svg>
                   GitHub
                 </a>
+                {/* Conditionally render "Play Now" button if a link exists */}
+                  {project.playLink && (
+                    <Link to={project.playLink} className="play-link-button" style={{
+                      display: 'inline-flex', alignItems: 'center', textDecoration: 'none', 
+                      background: '#28a745', color: 'white', padding: '5px 10px', borderRadius: '5px', fontSize: '0.9rem'
+                    }}>
+                      Play Now
+                    </Link>
+                  )}
+              </div>
               </div>
             </motion.div>
           ))}
@@ -167,6 +182,19 @@ function App() {
         </p>
       </footer>
     </div>
+  );
+}
+
+
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pong" element={<PongGame />} />
+      </Routes>
+    </Router>
   );
 }
 
