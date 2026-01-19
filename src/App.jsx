@@ -103,8 +103,6 @@ function Home() {
             </svg>
           </motion.div>
         </motion.div>
-
-
       </motion.header>
 
       {/* Projects section with parallax */}
@@ -184,8 +182,6 @@ function Home() {
     </div>
   );
 }
-
-
 
 function App() {
   return (

@@ -9,8 +9,6 @@ function PongGame() {
     const ctx = canvas.getContext('2d');
     
     // Game State Variables
-    // Using refs for mutable state so they persist across renders without triggering re-renders
-    // (This mimics the global variables you had in Processing)
     const state = {
       y1: 160,
       y2: 160,
@@ -18,6 +16,8 @@ function PongGame() {
       ballY: canvas.height / 2,
       ballXv: 2,
       ballYv: 1,
+      scoreLeft: 0,
+      scoreRight: 0,
       keys: {}
     };
 
@@ -38,18 +38,23 @@ function PongGame() {
     const render = () => {
       const { width, height } = canvas;
 
-      // 1. Draw Background (Simulating the trail effect from your code)
-      // Processing: fill(0, 0, 30, 30); rect(10, 10, width-20, height-20);
-      ctx.fillStyle = 'rgba(0, 0, 30, 0.12)'; // approx 30/255 opacity
-      ctx.fillRect(0, 0, width, height); // Clearing entire screen for simplicity or use specific rect
+      // Draw background
+      ctx.fillStyle = 'rgba(0, 0, 30, 0.12)';
+      ctx.fillRect(0, 0, width, height);
 
-      // Draw border box if you strictly want your original design (rect(10,10...))
-      // But usually clearing the whole screen is cleaner for standard JS games.
-      // Let's stick to a full clear for a cleaner look, or semi-transparent for trails:
-      // ctx.fillStyle = 'rgba(0, 0, 30, 0.2)'; 
-      // ctx.fillRect(0, 0, width, height);
+      // Draw Score
+      ctx.font = '32px monospace';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.textAlign = 'center';
+      ctx.fillText(`${state.scoreLeft}   ${state.scoreRight}`, width / 2, 50);
 
-      // 2. Input Logic (Paddle Movement)
+      // Draw Center Line
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+      ctx.beginPath();
+      ctx.moveTo(width / 2, 0);
+      ctx.lineTo(width / 2, height);
+      ctx.stroke();
+
       // Left Paddle (W/S)
       if ((state.keys['w'] || state.keys['W']) && state.y1 > 0) {
         state.y1 -= 5; // Adjusted speed for 60fps
@@ -65,22 +70,18 @@ function PongGame() {
         state.y2 += 5;
       }
 
-      // 3. Draw Paddles
-      // Processing: rect(40, y1, 10, 100);
+      // Draw Paddles
       ctx.fillStyle = 'rgb(0, 0, 255)';
       ctx.fillRect(40, state.y1, 10, 100); // Left Paddle
       ctx.fillRect(width - 50, state.y2, 10, 100); // Right Paddle (360 in 400w is width-40)
 
-      // 4. Ball Logic
       // Collision with paddles
-      // Check X bounds first to avoid sticking
       if (
         (state.ballX > width - 60 && state.ballY > state.y2 && state.ballY < state.y2 + 100) ||
         (state.ballX < 60 && state.ballY > state.y1 && state.ballY < state.y1 + 100)
       ) {
-        // Simple debounce to prevent ball getting stuck inside paddle
-        if (state.ballX < 60 && state.ballXv < 0) state.ballXv *= -1;
-        if (state.ballX > width - 60 && state.ballXv > 0) state.ballXv *= -1;
+        if (state.ballX < 60 && state.ballXv < 0) state.ballXv *= -1.1;
+        if (state.ballX > width - 60 && state.ballXv > 0) state.ballXv *= -1.1;
       }
 
       // Collision with Top/Bottom walls
@@ -88,25 +89,35 @@ function PongGame() {
         state.ballYv *= -1;
       }
 
-      // Reset if out of bounds (Score)
-      if (state.ballX > width || state.ballX < 0) {
-        state.ballX = width / 2;
-        state.ballY = height / 2;
-        // Optional: Reset speed or direction here
+      // Scoring logic
+      if (state.ballX > width) {
+        state.scoreLeft += 1;
+        resetBall(-1);
+      } else if (state.ballX < 0) {
+        state.scoreRight += 1;
+        resetBall(1);
       }
 
       // Update Position
       state.ballX += state.ballXv;
       state.ballY += state.ballYv;
 
-      // 5. Draw Ball
-      // Processing: ellipse(x, y, 10, 10);
+      // Draw Ball
       ctx.beginPath();
       ctx.arc(state.ballX, state.ballY, 5, 0, Math.PI * 2); // Radius is 5 (diameter 10)
       ctx.fill();
 
       animationFrameId = requestAnimationFrame(render);
     };
+
+
+    const resetBall = (direction) => {
+      state.ballX = canvas.width / 2;
+      state.ballY = canvas.height / 2;
+      state.ballXv = 2 * direction;
+      state.ballYv = 1;
+    }
+
 
     // Start Loop
     render();
