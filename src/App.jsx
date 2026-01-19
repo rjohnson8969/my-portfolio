@@ -28,14 +28,14 @@ function App() {
       title: 'Wireless Clustered SCADA System',
       description:'Fully wireless SCADA prototype using an ESP32-based wireless sensor network (WSN). Features a real-time FreeRTOS PID loop for reservoir level control, low-latency ESP-NOW peer-to-peer messaging with MAC-based addressing, and a custom HMI on an ST7789 TFT LCD with rotary encoder for monitoring and PID tuning.',
       githubLink: 'https://github.com/rjohnson8969/WSN-SCADA-Project',
-      image: './public/images/HMI.png',
+      image: '/images/HMI.png',
       //video: '/videos/scada-demo.mp4'
     },
     {
       title: 'ESP32 Stock Market Ticker',
       description: 'WiFi-enabled stock ticker using an ESP32 and Arduino C to display real-time market data on an ST7789 TFT display.',
       githubLink: 'https://github.com/rjohnson8969/stockTicker',
-      image: './public/images/stockTicker.png',
+      image: '/images/stockTicker.png',
       //video: '/videos/esp32-demo.mp4'
     },
     {
@@ -43,7 +43,7 @@ function App() {
       description:
         'JavaScript-based sorting visualizer with animated bars to demonstrate algorithms like bubble sort, selection sort, insertion sort, and quicksort (placeholder).',
       githubLink: 'https://github.com/rjohnson8969/sorting-visualizer', // placeholder
-      image: './public/images/sortingAlgVisual.png',
+      image: '/images/sortingAlgVisual.png',
       //video: '/videos/sorting-visualizer-demo.mp4' // placeholder (optional)
     },
     {
@@ -51,7 +51,7 @@ function App() {
       description:
         'Classic Pong game built in JavaScript with keyboard controls, score tracking, and increasing difficulty (placeholder).',
       githubLink: 'https://github.com/rjohnson8969/pong', // placeholder
-      image: './public/images/pong.png'
+      image: '/images/pong.png'
       //video: '/videos/pong-demo.mp4' // placeholder (optional)
     }
   ];
