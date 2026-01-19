@@ -30,12 +30,6 @@ function App() {
       githubLink: 'https://github.com/rjohnson8969/stockTicker',
       image: 'https://via.placeholder.com/400x250?text=ESP32+Stock+Ticker',
       video: '/videos/esp32-demo.mp4'
-    },
-    {
-      title: 'Robotic Arm Automated Writing',
-      description: 'Python program controlling a Fanuc CR-4iA robot arm for precise letter drawing using ROS.',
-      githubLink: 'https://github.com/rjohnson8969/robotic-arm-writing',
-      image: 'https://via.placeholder.com/400x250?text=Robotic+Arm'
     }
   ];
 
