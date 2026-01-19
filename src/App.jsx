@@ -49,7 +49,7 @@ function Home() {
     {
       title: 'Pong',
       description:
-        'Classic Pong game remake built in JavaScript with keyboard controls.',
+        'Simple Pong game remake built in JavaScript with keyboard controls, increasing difficulty, and scoring mechanics.',
       githubLink: 'https://github.com/rjohnson8969/pong',
       image: './images/pong.png',
       playLink: '/pong'
@@ -135,7 +135,7 @@ function Home() {
                 visible: { opacity: 1, y: 0 }
               }}
               className="project-item"
-              whileHover={{ scale: 1.10, transition: { duration: 0.2 } }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
             >
               <div className="project-image">
                 <img src={project.image} alt={project.title} />
