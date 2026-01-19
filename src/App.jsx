@@ -51,7 +51,7 @@ function App() {
       description:
         'Classic Pong game built in JavaScript with keyboard controls, score tracking, and increasing difficulty (placeholder).',
       githubLink: 'https://github.com/rjohnson8969/pong', // placeholder
-      image: '/public/images/pong.png'
+      image: './public/images/pong.png'
       //video: '/videos/pong-demo.mp4' // placeholder (optional)
     }
   ];
